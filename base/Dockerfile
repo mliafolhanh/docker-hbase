@@ -3,11 +3,10 @@ MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl netcat
 
-ENV HBASE_VERSION 1.2.6
-ENV HBASE_URL http://www.apache.org/dist/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz
+ENV HBASE_VERSION 2.4.15
+ENV HBASE_URL https://dlcdn.apache.org/hbase/stable/hbase-$HBASE_VERSION-bin.tar
 RUN set -x \
-    && curl -fSL "$HBASE_URL" -o /tmp/hbase.tar.gz \
-    && curl -fSL "$HBASE_URL.asc" -o /tmp/hbase.tar.gz.asc \
+    && curl -fSL "$HBASE_URL.gz" -o /tmp/hbase.tar.gz \
     && tar -xvf /tmp/hbase.tar.gz -C /opt/ \
     && rm /tmp/hbase.tar.gz*
 
